@@ -1,35 +1,38 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 const PokesList = (props) => {
 
    return (
-      <View style={styles.view}>
-         {
-            props.filteredPokesCharacteristics.map((poke) => {
-               return (
-                  <View
-                     key={Math.random()}
-                     style={styles.toCenter}
-                  >
-                     <TouchableOpacity
-                        style={styles.touchableOpacity}
-                        onPress={() => props.setPokemon(poke)}
+      <ScrollView>
+         <View style={styles.view}>
+            {
+               props.filteredPokesCharacteristics.map((poke) => {
+                  return (
+                     <View
+                        key={Math.random()}
+                        style={styles.toCenter}
                      >
-                        <Text style={styles.text}>{poke.name}</Text>
+                        <TouchableOpacity
+                           style={styles.touchableOpacity}
+                           onPress={() => props.setPokemon(poke)}
+                        >
+                           <Text style={styles.text}>{poke.name}</Text>
 
-                        <Image
-                           style={styles.tinyLogo}
-                           source={{
-                              uri: `${poke.sprites.other.dream_world.front_default}`,
-                           }}
-                        />
-                     </TouchableOpacity>
-                  </View>
-               )
-            })
-         }
-      </View>
+                           <Image
+                              style={styles.tinyLogo}
+                              source={{
+                                 uri: `${poke.sprites.other.home.front_default}`,
+                              }}
+                           />
+                        </TouchableOpacity>
+
+                     </View>
+                  )
+               })
+            }
+         </View >
+      </ScrollView>
    );
 }
 
@@ -44,8 +47,8 @@ const styles = StyleSheet.create({
    },
    text: {
       marginBottom: 2,
-      fontSize: 20,
-      fontWeight: "bolder",
+      fontSize: 15,
+      fontWeight: "bold",
       color: "rgb(12, 3, 38)",
    },
    touchableOpacity: {

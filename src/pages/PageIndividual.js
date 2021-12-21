@@ -42,7 +42,7 @@ const PageIndividual = (props) => {
             <Image
                style={styles.logo}
                source={{
-                  uri: `${pokemon.sprites.other.dream_world.front_default}`,
+                  uri: `${pokemon.sprites.other.home.front_default}`,
                }}
             />
          </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
    text: {
       marginBottom: 6,
       fontSize: 20,
-      fontWeight: "bolder",
+      fontWeight: "bold",
       color: "rgb(12, 3, 38)",
    },
    logo: {

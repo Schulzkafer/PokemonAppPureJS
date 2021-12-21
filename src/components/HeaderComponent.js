@@ -12,12 +12,12 @@ const HeaderComponent = () => {
 
 const styles = StyleSheet.create({
    header: {
-      textAlign: 'center',
-      justifyContent: 'center',
       paddingTop: 20,
       paddingBottom: 10,
    },
    text: {
+      justifyContent: 'center',
+      textAlign: 'center',
       fontWeight: "bold",
       fontSize: 25,
       color: "yellow",

@@ -15,13 +15,13 @@ const Footer = () => {
 const styles = StyleSheet.create({
    footer: {
       padding: 10,
-      textAlign: 'center',
       flexDirection: 'column',
       backgroundColor: "rgba(8, 22, 131, 0.8)",
    },
    text: {
+      textAlign: 'center',
+      fontWeight: "bold",
       color: "yellow",
-      fontWeight: 400
    }
 });
 
