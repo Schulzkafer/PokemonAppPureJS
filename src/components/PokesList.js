@@ -6,8 +6,7 @@ const PokesList = (props) => {
    return (
       <View style={styles.view}>
          {
-
-            props.pokesCharacteristics.map((poke) => {
+            props.filteredPokesCharacteristics.map((poke) => {
                return (
                   <View
                      key={Math.random()}
@@ -18,6 +17,7 @@ const PokesList = (props) => {
                         onPress={() => props.setPokemon(poke)}
                      >
                         <Text style={styles.text}>{poke.name}</Text>
+
                         <Image
                            style={styles.tinyLogo}
                            source={{
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
    text: {
       marginBottom: 2,
       fontSize: 20,
-
       fontWeight: "bolder",
       color: "rgb(12, 3, 38)",
    },
@@ -60,9 +59,7 @@ const styles = StyleSheet.create({
       marginBottom: 4,
       padding: 10,
       alignItems: 'center',
-      // backgroundColor: "rgba(0, 0, 255, 0.5)",
    }
 });
-
 
 export default PokesList;

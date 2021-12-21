@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const HeaderComponent = () => {
+
    return (
       <View style={styles.header}>
          <Text style={styles.text}>Pokemon App</Text>
@@ -11,11 +12,10 @@ const HeaderComponent = () => {
 
 const styles = StyleSheet.create({
    header: {
-      height: "5%",
-      paddingTop: 30,
-      paddingBottom: 10,
       textAlign: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      paddingTop: 20,
+      paddingBottom: 10,
    },
    text: {
       fontWeight: "bold",

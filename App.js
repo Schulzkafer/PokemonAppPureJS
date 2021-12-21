@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground } from 'react-native';
 
 import PageIndividual from './src/pages/PageIndividual';
 import PageMultiple from './src/pages/PageMultiple';
 
-import Footer from './src/components/Footer.js';
-import HeaderComponent from './src/components/HeaderComponent.js';
+import Footer from './src/components/Footer';
+import HeaderComponent from './src/components/HeaderComponent';
 
-import z from "./src/pages/test.js";//?
+const image = { uri: "https://iili.io/7yJVa4.jpgttps://reactjs.org/logo-og.png" };
 
+const App = () => {
 
-export default function App() {
-   const [pokemon, setPokemon] = useState(z);
-   const image = { uri: "https://iili.io/7yJVa4.jpgttps://reactjs.org/logo-og.png" };
+   const [pokemon, setPokemon] = useState(null);
+
    return (
       <View style={styles.container}>
          <ImageBackground
@@ -23,8 +23,13 @@ export default function App() {
             <HeaderComponent />
             {
                (pokemon) ?
-                  <PageIndividual pokemon={pokemon} setPokemon={setPokemon} /> :
-                  <PageMultiple setPokemon={setPokemon} />
+                  <PageIndividual
+                     pokemon={pokemon}
+                     setPokemon={setPokemon}
+                  /> :
+                  <PageMultiple
+                     setPokemon={setPokemon}
+                  />
             }
          </ImageBackground>
          <Footer />
@@ -35,11 +40,12 @@ export default function App() {
 const styles = StyleSheet.create({
    container: {
       flex: 1,
-      backgroundColor: "rgba(0, 0, 255, 0.5)",
       justifyContent: 'center',
+      backgroundColor: "rgba(0, 0, 255, 0.5)",
    },
    image: {
       flex: 1,
-      // opacity: 0.5
    },
 });
+
+export default App;

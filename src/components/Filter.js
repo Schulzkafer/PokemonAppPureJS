@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableHighlight, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
+import ButtonComponent from './ButtonComponent';
 
 const Filter = (props) => {
 
@@ -11,43 +12,28 @@ const Filter = (props) => {
             style={styles.input}
             onChangeText={setText}
             value={text}
-            placeholder={"type name of pokemon e touch filter"}
+            placeholder={"type name of a pokemon e touch the filter button"}
          />
-         <TouchableHighlight
-            style={styles.button}
-            onPress={() => props.filterNames(text)}
-         >
-            <Text style={styles.text}>FILTER</Text>
-         </TouchableHighlight>
+         <ButtonComponent
+            execFunction={() => props.filterNames(text)}
+         >FILTER
+         </ButtonComponent>
       </View>
    )
-
 }
 
 const styles = StyleSheet.create({
    input: {
       height: 40,
-      margin: 12,
+      marginTop: 10,
+      marginLeft: 20,
+      marginRight: 20,
       padding: 10,
+      borderWidth: 1,
+      borderRadius: 5,
       borderColor: "yellow",
-      borderWidth: 1,
-      backgroundColor: "#ffff99"
+      backgroundColor: "#ffff99",
    },
-   button: {
-      margin: 12,
-      padding: 10,
-      textAlign: 'center',
-
-      borderColor: "blue",
-      borderWidth: 1,
-      backgroundColor: "#00BFFF"
-   },
-   text: {
-      color: "darkblue",
-      fontSize: 20,
-      letterSpacing: 3,
-      fontWeight: "bold"
-   }
 });
 
 export default Filter;

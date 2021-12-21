@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Footer = () => {
+
    return (
       <View style={styles.footer}>
          <Text style={styles.text}>Developer: Aleksandr Karashev</Text>

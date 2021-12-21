@@ -1,51 +1,49 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import Filter from '../components/Filter.js';
-// import Message from '../components/Message.js';
-import PokesList from "../components/PokesList.js"
+import Filter from '../components/Filter';
+import PokesList from "../components/PokesList"
 
-const limit = 21;
+const limit = 50;
 
 const PageMultiple = (props) => {
 
-   // const [pokesFiltered, setPokesFiltered] = useState([]);
-   const [pokesCharacteristics, setPokesCharacteristics] = useState([]);
-   // const [message, setMessage] = useState("");
+   const [allPokes, setAllPokes] = useState([]);
+   const [filteredPokesCharacteristics, setFilteredPokesCharacteristics] = useState([]);
    const [isLoading, setIsLoading] = useState(false);
 
-   const setDefault = useCallback(() => {
+   const setDefaultAllPokes = useCallback(() => {
       setIsLoading(true)
       let requests = Array.from({ length: limit }, (_, i) => i + 1)
          .map(x => fetch(`https://pokeapi.co/api/v2/pokemon/${x}/`));
 
       Promise.all(requests)
          .then(responses => Promise.all(responses.map(res => res.json())))
-         .then(ps => setPokesCharacteristics(ps))
+         .then(ps => {
+            setAllPokes(ps)
+            setFilteredPokesCharacteristics(ps)
+         })
          .catch((err) => console.log(err.message));
       setIsLoading(false)
    })
 
    useEffect(() => {
-      setDefault()
+      setDefaultAllPokes()
    }, [])
 
    const filterNames = (text) => {
       text = text.trim().toLowerCase();
       if (!text.length) {
-         setDefault()
+         setFilteredPokesCharacteristics(allPokes)
          return;
       }
-      setPokesCharacteristics(pokesCharacteristics.filter(poke => poke.name.indexOf(text) > -1))
-      // setMessage(`results for ${text}`)
+      setFilteredPokesCharacteristics(allPokes.filter(poke => poke.name.indexOf(text) > -1))
    }
-
-
 
    return (
       <View>
          <Filter
-            filterNames={filterNames} />
-
+            filterNames={filterNames}
+         />
          {
             isLoading ?
                <ActivityIndicator
@@ -53,13 +51,12 @@ const PageMultiple = (props) => {
                   color="yellow"
                /> :
                <PokesList
-                  pokesCharacteristics={pokesCharacteristics}
+                  filteredPokesCharacteristics={filteredPokesCharacteristics}
                   setPokemon={props.setPokemon}
                />
          }
       </View>
    );
 }
-
 
 export default PageMultiple;
